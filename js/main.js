@@ -1,10 +1,12 @@
 const logSomething = (something) => console.log(something);
 
+// ! Elementi da raccogliere
 const randomButton = document.querySelector('button');
 const leftArrow = document.getElementById('left-arrow');
 const rightArrow = document.getElementById('right-arrow');
 const reviewContainerElement = document.querySelector('.review-container');
 let template = '';
+let currentIndexDisplayed;
 
 const users = [
     {
@@ -49,7 +51,6 @@ const getRandomReview = () => {
         randomReviewIndex = Math.floor(Math.random() * users.length - 1) +1;
      
     }
-
     return randomReviewIndex;
 
 };
@@ -70,8 +71,27 @@ const getTemplate = (image, name, role, review) => {
     reviewContainerElement.innerHTML = template;
 }
 
+const checkCurrentReview = (index) => {
+    //se la review attuale è la prima non avrò la freccietta sinistra
+    if (index === 0) {
+        leftArrow.classList.add('hidden')
+    
+    } else {
+        leftArrow.classList.remove('hidden')
+        
+    }
 
+    //se la review attuale è l'ultima' non avrò la freccietta destra
+    if (index === users.length-1) {
+        rightArrow.classList.add('hidden')
+    
+    } else {
+        rightArrow.classList.remove('hidden')
+    }
+      
+}
 
+//! inizio pagina
 
 //Preparing the first review to display
 
@@ -82,26 +102,73 @@ const firstUserimage = users[0].image;
 
 
 getTemplate(firstUserimage, firstUserName, firstUserRole, firstUserReview)
+currentIndexDisplayed = 0;
 
 
+
+//* non faccio vedere le frecciette in base al template in cui siamo
+
+const userNameElement = document.querySelector('.user-name');
+
+checkCurrentReview(currentIndexDisplayed);
 
 //! event listener
 
 //Quando premo il button, farò vedere una review a caso tra il mio array di reviews
 
 randomButton.addEventListener('click', ()=> {
+
+    
     const randomReviewIndex = getRandomReview();
+
 
     const randomName = users[randomReviewIndex].name;
     const randomRole = users[randomReviewIndex].role;
     const randomReview = users[randomReviewIndex].review;
     const randomImage = users[randomReviewIndex].image;
 
-    getTemplate(randomImage, randomName, randomRole, randomReview)
+    getTemplate(randomImage, randomName, randomRole, randomReview);
 
-
+    currentIndexDisplayed = randomReviewIndex;
+    checkCurrentReview(currentIndexDisplayed);
+   
 
 });
 
 
 //fare in modo che non possa apparire la stessa review di quella che già c'è
+
+//passare da una review all'altra in modo ordinato con le frecciette
+
+rightArrow.addEventListener('click', ()=> {
+    
+    currentIndexDisplayed++;
+
+    const currentName = users[currentIndexDisplayed].name;
+    const currentRole = users[currentIndexDisplayed].role;
+    const currentReview = users[currentIndexDisplayed].review;
+    const currentImage = users[currentIndexDisplayed].image;
+
+    getTemplate(currentImage, currentName, currentRole, currentReview)
+
+    checkCurrentReview(currentIndexDisplayed);
+
+
+});
+
+
+leftArrow.addEventListener('click', ()=> {
+    
+    currentIndexDisplayed--;
+
+    const currentName = users[currentIndexDisplayed].name;
+    const currentRole = users[currentIndexDisplayed].role;
+    const currentReview = users[currentIndexDisplayed].review;
+    const currentImage = users[currentIndexDisplayed].image;
+
+    getTemplate(currentImage, currentName, currentRole, currentReview)
+
+    checkCurrentReview(currentIndexDisplayed);
+
+
+});
