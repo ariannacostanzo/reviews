@@ -1,3 +1,12 @@
+/* properties */
+
+:root {
+    --light-blue: #5aa8d5;
+    --blue: #0b1f29;
+}
+
+/* generics */
+
 * {
     margin: 0;
     padding: 0;
@@ -9,23 +18,129 @@ body {
     text-align: center;
 }
 
+/* content */
+
 .container {
     padding: 8rem 1rem;
 }
 
 h1 {
     font-size: 3rem;
-    color: #0b1f29;
+    color: var(--blue);
 }
 
 
 .title span {
     width: 90px;
     height: 5px;
-    background-color: #5aa8d5;
+    background-color: var(--light-blue);
     margin: .5rem auto;
     display: block;
     position: relative;
     left: 10px;
 }
 
+/* card */
+
+.card {
+    background-color: white;
+    width: 590px;
+    height: 420px;
+    margin: 3rem auto;
+    box-shadow: 2px 7px 20px rgb(187, 186, 186);
+    border-radius: 5px;
+    padding: 0 1.5rem;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.img-container {
+    position: relative;
+    width: 27%;
+    margin: 0 auto;
+    padding: 1rem 0;
+}
+
+.user-image {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: 50%;
+    position: relative;
+    z-index: 1;
+    
+}
+
+.img-container span {
+    background-color: var(--light-blue);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 35px;
+    height: 35px;
+    position: absolute;
+    top: 15%;
+    left: 9%;
+    color: white;
+    font-size: 1.2rem;
+    z-index: 1;
+}
+
+.img-container::after {
+    content: '';
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background-color: var(--light-blue);
+    position: absolute;
+    left: 27px;
+    top: 12px;
+    z-index: 0;
+}
+
+.user-name {
+    letter-spacing: 3px;
+    color: var(--blue);
+    font-weight: bolder;
+    font-size: 1.3rem;
+    margin-bottom: .3rem;
+}
+
+.user-role {
+    color: var(--light-blue);
+    text-transform: uppercase;
+    font-size: .9rem;
+    margin-bottom: .7rem;
+    font-weight: 500;
+}
+
+.user-review {
+    line-height: 1.4rem;
+    color: #194d68;
+    margin-bottom: 1.5rem;
+}
+
+.arrow-container {
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    color: var(--light-blue);
+    margin-bottom: 1.5rem;
+}
+
+button {
+    border: 2px solid var(--light-blue);
+    border-radius: 10px;
+    background-color: white;
+    color: var(--light-blue);
+    padding: 5px 10px;
+    transition: .2s linear;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: var(--light-blue);
+    color: var(--blue);
+}
