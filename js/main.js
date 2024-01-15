@@ -10,6 +10,12 @@ let currentIndexDisplayed;
 
 const users = [
     {
+        name : 'Bryan Black',
+        role: 'Game developer',
+        review: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aut voluptates quas placeat perspiciatis aperiam provident eaque natus officiis assumenda at. Aspernatur illo voluptatibus exercitationem sed? Odio, quod? Fugit, iure. Fugit.',
+        image: 'persona6.jpg'
+    },
+    {
         name : 'Martha Watson',
         role: 'Web developer',
         review: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Neque nisi rerum iusto quasi nobis ipsam, eveniet architecto sapiente asperiores, explicabo dolorem, repudiandae porro! Sit, deleniti reprehenderit rerum et ipsam praesentium!',
@@ -38,13 +44,8 @@ const users = [
         role: 'Game designer',
         review: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugiat sunt quo esse ullam suscipit? Exercitationem officiis, consequatur beatae quis dolorem tempora. Magnam voluptatibus reprehenderit minima dignissimos.',
         image: 'persona5.jpg'
-    },
-    {
-        name : 'Bryan Black',
-        role: 'Game developer',
-        review: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aut voluptates quas placeat perspiciatis aperiam provident eaque natus officiis assumenda at. Aspernatur illo voluptatibus exercitationem sed? Odio, quod? Fugit, iure. Fugit.',
-        image: 'persona6.jpg'
-    },
+    }
+    
 ]
 
 //! funzioni
@@ -207,5 +208,3 @@ leftArrow.addEventListener('click', ()=> {
 
 });
 
-
-//fare in modo che non possa apparire la stessa review di quella che già c'è
