@@ -1,0 +1,1 @@
+Il documento serve a mostrare delle reviews. Ci saranno delle frecciette con cui scrollare le varie reviews, ed un button che le mostra in maniera randomica.

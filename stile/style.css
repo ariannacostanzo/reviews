@@ -1,0 +1,31 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f2f7fe;
+    text-align: center;
+}
+
+.container {
+    padding: 8rem 1rem;
+}
+
+h1 {
+    font-size: 3rem;
+    color: #0b1f29;
+}
+
+
+.title span {
+    width: 90px;
+    height: 5px;
+    background-color: #5aa8d5;
+    margin: .5rem auto;
+    display: block;
+    position: relative;
+    left: 10px;
+}
+
