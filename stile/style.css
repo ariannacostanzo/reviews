@@ -18,6 +18,10 @@ body {
     text-align: center;
 }
 
+.d-none {
+    display: none;
+}
+
 /* content */
 
 .container {
@@ -128,6 +132,11 @@ h1 {
     gap: 30px;
     color: var(--light-blue);
     margin-bottom: 1.5rem;
+    
+}
+
+#left-arrow, #right-arrow {
+    cursor: pointer;
 }
 
 button {
