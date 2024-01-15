@@ -91,26 +91,51 @@ const checkCurrentReview = (index) => {
       
 }
 
+const getProperties = (index) => {
+    let properties = [];
+
+    const UserImage = users[index].image;
+    const UserName = users[index].name;
+    const UserRole = users[index].role;
+    const UserReview = users[index].review;
+    
+    properties.push(UserImage, UserName, UserRole, UserReview);
+
+    return properties;
+
+}
+
 //! inizio pagina
 
-//Preparing the first review to display
+//*Preparing the first review to display
 
-const firstUserName = users[0].name;
-const firstUserRole = users[0].role;
-const firstUserReview = users[0].review;
-const firstUserimage = users[0].image;
+//?--------------------METODO 1-------------------------------------------------
+// const firstUserName = users[0].name;
+// const firstUserRole = users[0].role;
+// const firstUserReview = users[0].review;
+// const firstUserimage = users[0].image;
 
+// getTemplate(firstUserimage, firstUserName, firstUserRole, firstUserimage )
+//?------------------------------------------------------------------------------
 
-getTemplate(firstUserimage, firstUserName, firstUserRole, firstUserReview)
 currentIndexDisplayed = 0;
 
 
+//?--------------------METODO 2-------------------------------------------------
+//invece di ripetere ogni volta i valori da recuperare ho creato la funzione che li mette in un array, però così snaturo l'object, inoltre è poco dinamico
+//Questo però occupa solo due righe, e anche l'altro in realtà non era molto dinamico
+const firstUser = getProperties(currentIndexDisplayed);
+getTemplate(firstUser[0], firstUser[1], firstUser[2], firstUser[3])
+//?------------------------------------------------------------------------------
 
-//* non faccio vedere le frecciette in base al template in cui siamo
+
 
 const userNameElement = document.querySelector('.user-name');
 
 checkCurrentReview(currentIndexDisplayed);
+
+
+
 
 //! event listener
 
@@ -121,15 +146,23 @@ randomButton.addEventListener('click', ()=> {
     
     const randomReviewIndex = getRandomReview();
 
+//?--------------------METODO 1-------------------------------------------------
+    // const randomName = users[randomReviewIndex].name;
+    // const randomRole = users[randomReviewIndex].role;
+    // const randomReview = users[randomReviewIndex].review;
+    // const randomImage = users[randomReviewIndex].image;
 
-    const randomName = users[randomReviewIndex].name;
-    const randomRole = users[randomReviewIndex].role;
-    const randomReview = users[randomReviewIndex].review;
-    const randomImage = users[randomReviewIndex].image;
-
-    getTemplate(randomImage, randomName, randomRole, randomReview);
+    // getTemplate(randomImage, randomName, randomRole, randomReview);
+//?------------------------------------------------------------------------------
 
     currentIndexDisplayed = randomReviewIndex;
+
+    //?--------------------METODO 2-------------------------------------------------
+    const randomUser = getProperties(currentIndexDisplayed);
+    getTemplate(randomUser[0], randomUser[1], randomUser[2], randomUser[3])
+    //?------------------------------------------------------------------------------
+
+
     checkCurrentReview(currentIndexDisplayed);
    
 
@@ -144,12 +177,21 @@ rightArrow.addEventListener('click', ()=> {
     
     currentIndexDisplayed++;
 
-    const currentName = users[currentIndexDisplayed].name;
-    const currentRole = users[currentIndexDisplayed].role;
-    const currentReview = users[currentIndexDisplayed].review;
-    const currentImage = users[currentIndexDisplayed].image;
+    //?--------------------METODO 1-------------------------------------------------
+    // const currentName = users[currentIndexDisplayed].name;
+    // const currentRole = users[currentIndexDisplayed].role;
+    // const currentReview = users[currentIndexDisplayed].review;
+    // const currentImage = users[currentIndexDisplayed].image;
 
-    getTemplate(currentImage, currentName, currentRole, currentReview)
+    // getTemplate(currentImage, currentName, currentRole, currentReview);
+    //?------------------------------------------------------------------------------
+
+
+
+    //?--------------------METODO 2-------------------------------------------------
+    const currentUser = getProperties(currentIndexDisplayed);
+    getTemplate(currentUser[0], currentUser[1], currentUser[2], currentUser[3])
+    //?------------------------------------------------------------------------------
 
     checkCurrentReview(currentIndexDisplayed);
 
@@ -161,12 +203,20 @@ leftArrow.addEventListener('click', ()=> {
     
     currentIndexDisplayed--;
 
-    const currentName = users[currentIndexDisplayed].name;
-    const currentRole = users[currentIndexDisplayed].role;
-    const currentReview = users[currentIndexDisplayed].review;
-    const currentImage = users[currentIndexDisplayed].image;
+    //?--------------------METODO 1-------------------------------------------------
+    // const currentName = users[currentIndexDisplayed].name;
+    // const currentRole = users[currentIndexDisplayed].role;
+    // const currentReview = users[currentIndexDisplayed].review;
+    // const currentImage = users[currentIndexDisplayed].image;
 
-    getTemplate(currentImage, currentName, currentRole, currentReview)
+    // getTemplate(currentImage, currentName, currentRole, currentReview)
+    //?------------------------------------------------------------------------------
+
+
+    //?--------------------METODO 2-------------------------------------------------
+    const currentUser = getProperties(currentIndexDisplayed);
+    getTemplate(currentUser[0], currentUser[1], currentUser[2], currentUser[3])
+    //?------------------------------------------------------------------------------
 
     checkCurrentReview(currentIndexDisplayed);
 
