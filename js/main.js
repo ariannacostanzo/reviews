@@ -39,11 +39,21 @@ const users = [
         review: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugiat sunt quo esse ullam suscipit? Exercitationem officiis, consequatur beatae quis dolorem tempora. Magnam voluptatibus reprehenderit minima dignissimos.',
         image: 'persona5.jpg'
     },
+    {
+        name : 'Bryan Black',
+        role: 'Game developer',
+        review: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aut voluptates quas placeat perspiciatis aperiam provident eaque natus officiis assumenda at. Aspernatur illo voluptatibus exercitationem sed? Odio, quod? Fugit, iure. Fugit.',
+        image: 'persona6.jpg'
+    },
 ]
 
 //! funzioni
 
 
+/** Gets a randomNumber from 0 to users.length -1
+ * 
+ * @returns {number} a random number 
+ */
 const getRandomReview = () => {
 
     let randomReviewIndex;
@@ -56,6 +66,13 @@ const getRandomReview = () => {
 };
 
 
+/** Gets the template changing it dynamically 
+ * 
+ * @param {string} image current user image
+ * @param {string} name current user name
+ * @param {string} role current user role
+ * @param {string} review current user review
+ */
 const getTemplate = (image, name, role, review) => {
     template = `
     <div class="img-container">
@@ -71,6 +88,11 @@ const getTemplate = (image, name, role, review) => {
     reviewContainerElement.innerHTML = template;
 }
 
+
+/** Validation to hide the left arrow when the first review is displayed and hide the right arrow when the last review is displayed
+ * 
+ * @param {number} index index of the array users
+ */
 const checkCurrentReview = (index) => {
     //se la review attuale è la prima non avrò la freccietta sinistra
     if (index === 0) {
@@ -91,6 +113,12 @@ const checkCurrentReview = (index) => {
       
 }
 
+
+/**ottengo le proprietà degli oggetti, scegliendo dinamicamente quello che mi serve con l'index e li inserisco in un array
+ * 
+ * @param {number} index 
+ * @returns {Array} array of strings, rapresenting the user properties
+ */
 const getProperties = (index) => {
     let properties = [];
 
@@ -128,10 +156,6 @@ const firstUser = getProperties(currentIndexDisplayed);
 getTemplate(firstUser[0], firstUser[1], firstUser[2], firstUser[3])
 //?------------------------------------------------------------------------------
 
-
-
-const userNameElement = document.querySelector('.user-name');
-
 checkCurrentReview(currentIndexDisplayed);
 
 
@@ -143,33 +167,18 @@ checkCurrentReview(currentIndexDisplayed);
 
 randomButton.addEventListener('click', ()=> {
 
-    
+    //ottengo un numero casuale da 0 a users.length - 1
     const randomReviewIndex = getRandomReview();
-
-//?--------------------METODO 1-------------------------------------------------
-    // const randomName = users[randomReviewIndex].name;
-    // const randomRole = users[randomReviewIndex].role;
-    // const randomReview = users[randomReviewIndex].review;
-    // const randomImage = users[randomReviewIndex].image;
-
-    // getTemplate(randomImage, randomName, randomRole, randomReview);
-//?------------------------------------------------------------------------------
-
     currentIndexDisplayed = randomReviewIndex;
 
-    //?--------------------METODO 2-------------------------------------------------
     const randomUser = getProperties(currentIndexDisplayed);
     getTemplate(randomUser[0], randomUser[1], randomUser[2], randomUser[3])
-    //?------------------------------------------------------------------------------
-
-
-    checkCurrentReview(currentIndexDisplayed);
    
+    checkCurrentReview(currentIndexDisplayed);
 
 });
 
 
-//fare in modo che non possa apparire la stessa review di quella che già c'è
 
 //passare da una review all'altra in modo ordinato con le frecciette
 
@@ -177,21 +186,8 @@ rightArrow.addEventListener('click', ()=> {
     
     currentIndexDisplayed++;
 
-    //?--------------------METODO 1-------------------------------------------------
-    // const currentName = users[currentIndexDisplayed].name;
-    // const currentRole = users[currentIndexDisplayed].role;
-    // const currentReview = users[currentIndexDisplayed].review;
-    // const currentImage = users[currentIndexDisplayed].image;
-
-    // getTemplate(currentImage, currentName, currentRole, currentReview);
-    //?------------------------------------------------------------------------------
-
-
-
-    //?--------------------METODO 2-------------------------------------------------
     const currentUser = getProperties(currentIndexDisplayed);
     getTemplate(currentUser[0], currentUser[1], currentUser[2], currentUser[3])
-    //?------------------------------------------------------------------------------
 
     checkCurrentReview(currentIndexDisplayed);
 
@@ -203,22 +199,13 @@ leftArrow.addEventListener('click', ()=> {
     
     currentIndexDisplayed--;
 
-    //?--------------------METODO 1-------------------------------------------------
-    // const currentName = users[currentIndexDisplayed].name;
-    // const currentRole = users[currentIndexDisplayed].role;
-    // const currentReview = users[currentIndexDisplayed].review;
-    // const currentImage = users[currentIndexDisplayed].image;
-
-    // getTemplate(currentImage, currentName, currentRole, currentReview)
-    //?------------------------------------------------------------------------------
-
-
-    //?--------------------METODO 2-------------------------------------------------
     const currentUser = getProperties(currentIndexDisplayed);
     getTemplate(currentUser[0], currentUser[1], currentUser[2], currentUser[3])
-    //?------------------------------------------------------------------------------
 
     checkCurrentReview(currentIndexDisplayed);
 
 
 });
+
+
+//fare in modo che non possa apparire la stessa review di quella che già c'è
